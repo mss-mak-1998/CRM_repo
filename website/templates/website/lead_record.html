@@ -1,0 +1,50 @@
+{% extends 'website/base.html' %}
+
+{% block title %}Create New Record{% endblock %}
+
+{% block content %}
+<br/>
+
+<div class = 'col-md-6 offset-md-3'>
+
+<h1>{{ lead_record.first_name}} Details</h1>
+<br/>
+
+<div class="card text-center">
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Update</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Delete</a>
+        </li>
+
+      </ul>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">{{ lead_record.first_name }} Information</h5>
+      <p class="card-text">First Name :{{ lead_record.first_name }} </p>
+      <p class="card-text">Last Name :{{ lead_record.last_name }} </p>
+      <a href="#" class="btn btn-primary">Home</a>
+    </div>
+  </div>
+
+{{ lead_record.first_name }}<br/>
+{{ lead_record.last_name }}<br/>
+
+{{ lead_record.age }}
+{{ record.email }}
+
+{{ lead_record.country }}
+{{ lead_record.city }}
+
+{{ lead_record.zip_code }}
+{{ lead_record.created_at }}
+
+
+
+</div>
+
+{% endblock %}

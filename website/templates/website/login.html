@@ -1,0 +1,21 @@
+{% extends 'website/base.html' %}
+
+{% block title %}Login Page{% endblock %}
+
+{% block content %}
+
+<div class = 'col-md-6 offset-md-3'>
+    <br/>
+    {% if not user.is_authenticated %}
+    <h1>Login</h1>
+
+    <form method = 'POST'>
+
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type = 'submit'>Login</button>
+    </form>
+    {% endif %}
+</div>
+
+{% endblock %}
