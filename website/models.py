@@ -12,6 +12,7 @@ class Record(models.Model):
     city = models.CharField(max_length=50)
     zip_code = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add=True) #This just creates a time stamp in real time for each new created entry
+    updated_at = models.DateTimeField(auto_now=True) #This just creates a time stamp in real time for each new created entry
     
     # Display utility function (Only returns first name, last name and age IF we only
     # call the records variable from our view  in our frontend)

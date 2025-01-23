@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from .forms import LoginForm, RegistrationModelForm, RecordModelForm
 from .models import Record
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 
 #AUTHENTICATION SECTION
@@ -85,4 +86,30 @@ def lead_record(request, pk):
     }
     
     return render(request, 'website/lead_record.html', context)
-    
+
+@login_required
+def lead_record_delete(request, pk):
+    record = Record.objects.get(id=pk)
+    record.delete()
+    messages.success(request, f"Client {record.first_name} {record.last_name} has been deleted successfully.")
+    return redirect('website:home')
+
+@login_required
+def lead_record_edit(request, pk):
+    current_record = Record.objects.get(id=pk)
+
+    if request.method == "POST":
+        form = RecordModelForm(request.POST, instance=current_record)
+        if form.is_valid():
+            form.save()
+            # Use redirect for navigating to a URL pattern or view
+            return redirect('website:home')
+    else:
+        form = RecordModelForm(instance=current_record)  # Load current instance into the form
+
+    context = {
+        'form': form
+    }
+
+    return render(request, 'website/lead_record_edit.html', context)
+        

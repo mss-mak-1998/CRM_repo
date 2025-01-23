@@ -1,0 +1,22 @@
+{% extends 'website/base.html' %}
+
+{% block title %}Edit Record{% endblock %}
+
+{% block content %}
+<br/>
+
+<h1>Update Client Information</h1>
+
+<br/>
+
+<div class = 'col-md-6 offset-md-3'>
+
+    <form method = "POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type = 'submit'>Edit</button>
+    </form>
+</div>
+
+{% endblock %}
